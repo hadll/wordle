@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <link rel="stylesheet" href="stylesheet.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai+Looped:wght@500&display=swap" rel="stylesheet">
+        <div>
+            <div style="display: flex; justify-content: space-between;"> <!--letters-->
+                <h1 class="emptyTile" id=1></h1>
+                <h1 class="emptyTile" id=2></h1>
+                <h1 class="emptyTile" id=3></h1>
+                <h1 class="emptyTile" id=4></h1>
+                <h1 class="emptyTile" id=5></h1>
+            </div>
+            <div style="display: flex; justify-content: space-between;"> <!--letters-->
+                <h1 class="emptyTile" id=6></h1>
+                <h1 class="emptyTile" id=7></h1>
+                <h1 class="emptyTile" id=8></h1>
+                <h1 class="emptyTile" id=9></h1>
+                <h1 class="emptyTile" id=10></h1>
+            </div>
+            <div style="display: flex; justify-content: space-between;"> <!--letters-->
+                <h1 class="emptyTile" id=11></h1>
+                <h1 class="emptyTile" id=12></h1>
+                <h1 class="emptyTile" id=13></h1>
+                <h1 class="emptyTile" id=14></h1>
+                <h1 class="emptyTile" id=15></h1>
+            </div>
+            <div style="display: flex; justify-content: space-between;"> <!--letters-->
+                <h1 class="emptyTile" id=16></h1>
+                <h1 class="emptyTile" id=17></h1>
+                <h1 class="emptyTile" id=18></h1>
+                <h1 class="emptyTile" id=19></h1>
+                <h1 class="emptyTile" id=20></h1>
+            </div>
+            <div style="display: flex; justify-content: space-between;"> <!--letters-->
+                <h1 class="emptyTile" id=21></h1>
+                <h1 class="emptyTile" id=22></h1>
+                <h1 class="emptyTile" id=23></h1>
+                <h1 class="emptyTile" id=24></h1>
+                <h1 class="emptyTile" id=25></h1>
+            </div>
+        </div>
+        <div> <!--keyboard-->
+            <button onclick="keyboard('Q')">Q</button><button onclick="keyboard('W')">W</button><button onclick="keyboard('E')">E</button><button onclick="keyboard('R')">R</button><button onclick="keyboard('T')">T</button><button onclick="keyboard('Y')">Y</button><button onclick="keyboard('U')">U</button><button onclick="keyboard('I')">I</button><button onclick="keyboard('O')">O</button><button onclick="keyboard('P')">P</button><br>
+            <button onclick="keyboard('A')">A</button><button onclick="keyboard('S')">S</button><button onclick="keyboard('D')">D</button><button onclick="keyboard('F')">F</button><button onclick="keyboard('G')">G</button><button onclick="keyboard('H')">H</button><button onclick="keyboard('J')">J</button><button onclick="keyboard('K')">K</button><button onclick="keyboard('L')">L</button><br>
+            <button type="submit" onclick="enter()">✔</button><button onclick="keyboard('Z')">Z</button><button onclick="keyboard('X')">X</button><button onclick="keyboard('C')">C</button><button onclick="keyboard('V')">V</button><button onclick="keyboard('B')">B</button><button onclick="keyboard('N')">N</button><button onclick="keyboard('M')">M</button><button onclick="backspace()">⌫</button>
+        </div>
+        
+        <script>
+            var guess=[]
+            var row=0
+            const target="WORDL"
+            async function enter(){
+                if (guess.length==5){
+                    for (let i=0; i<5; i++) {
+                        document.getElementById(i+1+(row*5)).style="animation-delay: "+(i+1+(row*5))+"s;"
+                        document.getElementById(i+1+(row*5)).className="finishedTile"
+                        if (guess[i]==target[i]){
+                            document.getElementById(i+1+(row*5)).style = "background-color: rgb(20, 184, 83)"
+                        }
+                        else if (target.includes(guess[i])){
+                            document.getElementById(i+1+(row*5)).style = "background-color: rgb(252, 80, 0)"
+                        }
+                        else{
+                            document.getElementById(i+1+(row*5)).style = "background-color: rgb(105, 105, 105)"
+                        }
+                    }
+                    row+=1
+                    guess=[]
+                }
+            };
+            async function backspace(){
+                if (guess.length>0){
+                    document.getElementById(guess.length+(row*5)).className="emptyTile"
+                    guess.pop();
+                    updateGuess();
+                }
+            }
+            async function keyboard(key){
+                if(guess.length<5){
+                    guess.push(key)
+                    document.getElementById(guess.length+(row*5)).className="filledTile"
+                    updateGuess()
+                }
+            }
+            function updateGuess(){
+                for (let i=0; i<5; i++) {
+                    try{
+                        document.getElementById(i+1+(row*5)).innerHTML=guess[i].toString()
+                    }
+                    catch(err){
+                        document.getElementById(i+1+(row*5)).innerHTML='​'
+                    }
+                }
+            }
+        </script>
+    </body>
+</html>
