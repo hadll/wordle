@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Wordl</title>
-        <meta name=”viewport” content=”width=device-width, initial-scale=1″>
+        <meta name=”viewport” content=”width=1920, initial-scale=1″>
         <link rel="stylesheet" href="stylesheet.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -63,6 +63,11 @@
         </div>
         
         <script>
+            var siteWidth = 1920;
+            var scale = screen.width /siteWidth;
+
+            document.querySelector('meta[name="viewport"]').setAttribute('content', 'width='+siteWidth+', initial-scale='+scale+'');
+
             var alphabet=["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
             var guess=[]
             var row=0
