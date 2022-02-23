@@ -75,7 +75,6 @@
             var guess = []
             var row = 0
             const target = GetWordRandom()
-            alert(target)
             window.onload = function () {
                 var alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
                 window.onkeydown = function (getKey) {
@@ -99,7 +98,6 @@
                         document.getElementById(i + currRow).style.animationPlayState = "running"
                     }
                     sleep(200)
-                    alert(document.getElementById(4 + currRow).innerHTML)
                     var temp_target = []
                     for (let i = 0; i < 5; i++) { temp_target[i] = target[i].toUpperCase() }
                     for (let i = 0; i < 5; i++) {
