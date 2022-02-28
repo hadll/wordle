@@ -3,11 +3,9 @@
 }
 button{
     color: #000000;
-    font-size: 100%;
-    width: 3%;
-    height: 60%;
-    padding-top: 1%;
-    padding-bottom: 1%;
+    font-size: 150%;
+    width: 6vh;
+    height: 8vh;
     background-color: rgb(224, 224, 224);
     font-family: 'IBM Plex Sans Thai Looped', sans-serif;
     border-radius: 8pt;
@@ -41,6 +39,7 @@ h1{
     color:rgb(255, 255, 255);
     animation-iteration-count: infinite;
     animation: disappear 1s;
+    display: inline-grid;
 }
 .filledTile{
     border-color: rgb(73, 73, 73);
