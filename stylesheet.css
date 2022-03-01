@@ -33,6 +33,7 @@ h1{
     flex-basis: 19.8%;
 }
 .emptyTile{
+    width:4vh
     border-width: 4pt;
     border-style: solid;
     border-color: rgb(110, 110, 110);
