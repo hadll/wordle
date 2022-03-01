@@ -2,10 +2,11 @@
     --tilecolour: rgb(255,0,0)
 }
 button{
+    text-align: center;
     color: #000000;
     font-size: 150%;
-    width: 6vh;
-    height: 8vh;
+    width: 5vh;
+    height: 8.5vh;
     background-color: rgb(224, 224, 224);
     font-family: 'IBM Plex Sans Thai Looped', sans-serif;
     border-radius: 8pt;
@@ -40,6 +41,7 @@ h1{
     animation-iteration-count: infinite;
     animation: disappear 1s;
     display: inline-grid;
+    vertical-align: middle;
 }
 .filledTile{
     border-color: rgb(73, 73, 73);
@@ -59,6 +61,11 @@ h1{
 .hiddenTile{
     transform:scaleY(0);
     transition-duration: 500ms;
+}
+.tileDiv{
+    display: flex;
+    justify-content: space-between;
+    margin: -20px;
 }
 @keyframes appear{
     0% {transform: scale(0.5); opacity: 0;}
