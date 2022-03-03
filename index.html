@@ -77,12 +77,12 @@
             function EncodeCustomLink(){
                 var specifiedWord=document.getElementById('customWord')
                 if (specifiedWord.length=5){
-                    alert(btoa(specifiedWord))
+                    alert(btoa("https://hadll.github.io/wordle?"+specifiedWord))
                 }
             }
             const url=window.location.href
             if (url.length>31){
-                target=atob(url.replace("https://hadll.github.io/wordle/",""))
+                target=atob(url.replace("https://hadll.github.io/wordle?",""))
             }
             alert(url)
             alert(url.length())
