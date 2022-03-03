@@ -7,10 +7,14 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai+Looped:wght@500&display=swap" rel="stylesheet">
+        <link rel="icon" type="image/x-icon" href="Images/wordl-favicon.svg">
     </head>
     <body>
         <div>
-            <header class="finishedTile">WORDL</header>
+            <header class="finishedTile">WORDL
+            <button style="width:fit-content" onclick="EncodeCustomLink()">Make custom word</button>
+            <input type="text" id="customWord">
+            </header>
         </div>
         <div style="width:35vh; margin: auto; line-height: 4.5vh;">
             <div class="tileDiv"> <!--letters-->
@@ -70,6 +74,18 @@
             function getRndInteger(min, max) {
                 return Math.floor(Math.random() * (max - min) ) + min;
             }
+            function EncodeCustomLink(){
+                var specifiedWord=document.getElementById('customWord')
+                if (specifiedWord.length=5){
+                    alert(btoa(specifiedWord))
+                }
+            }
+            const url=window.location.href
+            if (url.length>31){
+                target=atob(url.replace("https://hadll.github.io/wordle/",""))
+            }
+            alert(url)
+            alert(url.length())
             var siteWidth = 1920;
             var scale = screen.width / siteWidth;
             var day = Math.round(Date.now() / 86400000)-(words.length*(Math.floor(Math.round(Date.now() / 86400000)/words.length)))
@@ -103,7 +119,9 @@
                     var temp_target = []
                     for (let i = 0; i < 5; i++) { temp_target[i] = target[i].toUpperCase() }
                     for (let i = 0; i < 5; i++) {
-                        document.getElementById(guess[i].toLowerCase()).style = "background-color:rgb(105, 105, 105)"
+                        if (document.getElementById(guess[i].toLowerCase()).style =="background-color: rgb(43, 42, 42);"){
+                            document.getElementById(guess[i].toLowerCase()).style = "background-color:rgb(105, 105, 105)"
+                        }
                         if (guess[i] === temp_target[i]) {
                             document.getElementById(i + currRow).style = "background-color: rgb(20, 184, 83)"
                             document.getElementById(guess[i].toLowerCase()).style = "background-color: rgb(20, 184, 83)"
