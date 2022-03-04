@@ -75,7 +75,8 @@
                 return Math.floor(Math.random() * (max - min) ) + min;
             }
             function EncodeCustomLink(){
-                var specifiedWord=document.getElementById('customWord')
+                var specifiedWord=document.getElementById('customWord').value
+                alert(specifiedWord)
                 if (specifiedWord.length=5){
                     alert(btoa(specifiedWord))
                 }
@@ -85,7 +86,7 @@
                 target=atob(url.replace("https://hadll.github.io/wordle/",""))
             }
             alert(url)
-            alert(url.length())
+            alert(url.length)
             var siteWidth = 1920;
             var scale = screen.width / siteWidth;
             var day = Math.round(Date.now() / 86400000)-(words.length*(Math.floor(Math.round(Date.now() / 86400000)/words.length)))
