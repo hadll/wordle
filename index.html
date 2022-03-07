@@ -78,7 +78,7 @@
                 var specifiedWord=encode(document.getElementById('customWord').value)
                 alert(specifiedWord)
                 if (specifiedWord.length=5){
-                    alert("https://hadll.github.io/wordle/?"+window.btoa(specifiedWord))
+                    alert("https://hadll.github.io/wordle/?"+toString(specifiedWord))
                 }
             }
             function encode(val) {
@@ -99,7 +99,7 @@
             }
             const url=window.location.href
             if (url.replace("https://hadll.github.io/wordle","")>2){
-                target=decode(atob(url.replace("https://hadll.github.io/wordle/?","")))
+                target=decode(Number(url.replace("https://hadll.github.io/wordle/?","")))
                 alert((url.replace("https://hadll.github.io/wordle/?","")))
                 alert(target)
             }
