@@ -75,11 +75,7 @@
                 return Math.floor(Math.random() * (max - min) ) + min;
             }
             function EncodeCustomLink(){
-                var specifiedWord=encode(document.getElementById('customWord').value)
-                alert(specifiedWord)
-                if (specifiedWord.length=5){
-                    alert("https://hadll.github.io/wordle/?"+toString(specifiedWord))
-                }
+                alert("https://hadll.github.io/wordle/?"+encode(document.getElementById("customWord").value))
             }
             function encode(val) {
                 let t = 0;
@@ -99,9 +95,9 @@
             }
             const url=window.location.href
             if (url.replace("https://hadll.github.io/wordle","")>2){
-                target=decode(Number(url.replace("https://hadll.github.io/wordle/?","")))
-                alert((url.replace("https://hadll.github.io/wordle/?","")))
-                alert(target)
+                alert(url.replace("https://hadll.github.io/wordle/?",""))
+                alert(decode(url.replace("https://hadll.github.io/wordle/?","")))
+                word=decode(url.replace("https://hadll.github.io/wordle/?",""))
             }
             alert(url)
             alert(url.length)
