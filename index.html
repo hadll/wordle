@@ -77,6 +77,7 @@
             function EncodeCustomLink(){
                 alert("https://hadll.github.io/wordle/?"+encode(document.getElementById("customWord").value))
             }
+            const target = GetWordRandom()
             var alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
             function encode(val) {
                 let t = 0;
@@ -110,7 +111,6 @@
             // document.querySelector('meta[name="viewport"]').setAttribute('content', 'width='+siteWidth+', initial-scale='+scale+'');
             var guess = []
             var row = 0
-            const target = GetWordRandom()
             window.onload = function () {
                 window.onkeydown = function (getKey) {
                     if (getKey.keyCode > 64 && getKey.keyCode < 91) {
