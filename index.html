@@ -95,11 +95,12 @@
                 return val
             }
             const url=window.location.href
-            if (url.replace("https://hadll.github.io/wordle","")>2){
+            if ((url.replace("https://hadll.github.io/wordle","")).length>2){
                 alert(url.replace("https://hadll.github.io/wordle/?",""))
                 alert(decode(url.replace("https://hadll.github.io/wordle/?","")))
-                word=decode(url.replace("https://hadll.github.io/wordle/?",""))
+                target=decode(url.replace("https://hadll.github.io/wordle/?",""))
             }
+            alert(decode(url.replace("https://hadll.github.io/wordle/?","")))
             alert(url)
             alert(url.length)
             var siteWidth = 1920;
