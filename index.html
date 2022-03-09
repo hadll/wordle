@@ -74,10 +74,16 @@
             function getRndInteger(min, max) {
                 return Math.floor(Math.random() * (max - min) ) + min;
             }
+            var siteWidth = 1920;
+            var scale = screen.width / siteWidth;
+            var day = Math.round(Date.now() / 86400000)-(words.length*(Math.floor(Math.round(Date.now() / 86400000)/words.length)))
+            var target = GetWordRandom()
+            // document.querySelector('meta[name="viewport"]').setAttribute('content', 'width='+siteWidth+', initial-scale='+scale+'');
+            var guess = []
+            var row = 0
             function EncodeCustomLink(){
                 alert("Use this link to play your word! : https://hadll.github.io/wordle/?"+encode(document.getElementById("customWord").value))
             }
-            var target = GetWordRandom()
             var alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
             function encode(val) {
                 val.toUpperCase()
@@ -100,13 +106,6 @@
             if ((url.replace("https://hadll.github.io/wordle","")).length>2){
                 target=decode(url.replace("https://hadll.github.io/wordle/?",""))
             }
-            var siteWidth = 1920;
-            var scale = screen.width / siteWidth;
-            var day = Math.round(Date.now() / 86400000)-(words.length*(Math.floor(Math.round(Date.now() / 86400000)/words.length)))
-            
-            // document.querySelector('meta[name="viewport"]').setAttribute('content', 'width='+siteWidth+', initial-scale='+scale+'');
-            var guess = []
-            var row = 0
             window.onload = function () {
                 window.onkeydown = function (getKey) {
                     if (getKey.keyCode > 64 && getKey.keyCode < 91) {
