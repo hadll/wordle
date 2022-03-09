@@ -88,9 +88,9 @@
             var guess = []
             var row = 0
             function EncodeCustomLink(){
-                let word = (document.getElementById("customWord").value).toUpperCase()
-                if (word.length=5 && isWord(word)){
-                    alert("Use this link to play your word! : https://hadll.github.io/wordle/?"+encode(word))
+                let word = (document.getElementById("customWord").value)
+                if (word.length=5){
+                    alert("Use this link to play your word! : https://hadll.github.io/wordle/?"+encode(word.toUpperCase()))
                 }
             }
             var alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
@@ -129,7 +129,7 @@
             };
             function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
             async function enter() {
-                if (guess.length == 5 && isWord(guess)) {
+                if (guess.length == 5) {
                     var currRow = 1 + (row * 5);
                     for (let i = 0; i < 5; i++) {
                         document.getElementById(i + currRow).className = "finishedTile"
