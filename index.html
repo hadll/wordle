@@ -73,7 +73,7 @@
                 return words[day]
             }
             function isWord(word){
-                if(dictionary.includes(word)){
+                if(dictionary.includes(word.toLowerCase)){
                     return true
                 }
             }
@@ -89,7 +89,7 @@
             var row = 0
             function EncodeCustomLink(){
                 let word = (document.getElementById("customWord").value).toUpperCase()
-                if (word.length=5 && isWord(word.toLowerCase())){
+                if (word.length=5 && isWord(word)){
                     alert("Use this link to play your word! : https://hadll.github.io/wordle/?"+encode(word))
                 }
             }
