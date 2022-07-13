@@ -33,7 +33,7 @@ h1{
     flex-basis: 19.8%;
 }
 .emptyTile{
-    width:4vh
+    width:4vh;
     border-width: 4pt;
     border-style: solid;
     border-color: rgb(110, 110, 110);
@@ -94,4 +94,23 @@ h1{
 @keyframes flipStart {
     20% {transform: rotateX(0deg);}
     100% {transform: rotateX(-90deg);}
+}
+.menubutton{
+    border:none;
+    background:none;
+    color:white;
+    margin-bottom: 30px;
+}
+.menu{
+    border-radius: 8px;
+    background-color: rgb(73, 73, 73);
+    border-color: rgb(20, 184, 83);
+    border-style: solid;
+    border-width: 9px;
+    width:20%;
+    position: absolute;
+    left:35%;
+    top: 20%;
+    padding:5%;
+    visibility: hidden;
 }
