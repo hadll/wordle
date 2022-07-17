@@ -17,6 +17,7 @@
             </header>
         </div>
         <div class="menu" id="menuDiv">
+            <h2 id="Results"></h2>
             <button class="menubutton" style="width:fit-content" onclick="GetRandomWord()">Play a random word</button>
             <button class="menubutton" style="width:fit-content" onclick="EncodeCustomLink()">Make custom word</button>
             <input type="text" id="customWord">
@@ -83,6 +84,8 @@
             function isWord(word){
                 if(dictionary.includes(word.toLowerCase)){
                     return true
+                }else{
+                    return false
                 }
             }
             function getRndInteger(min, max) {
@@ -95,7 +98,7 @@
             // document.querySelector('meta[name="viewport"]').setAttribute('content', 'width='+siteWidth+', initial-scale='+scale+'');
             var guess = []
             var row = 0
-            var menu_open = false;
+            var menu_open = true;
             function EncodeCustomLink(){
                 let word = (document.getElementById("customWord").value)
                 if (word.length=5){
@@ -108,7 +111,7 @@
                 if (menu_open){
                     menu_open = false;
                     menu_div.style = "visibility:visible;"
-                } else if(!menu_open){
+                } else{
                     menu_open = true;
                     menu_div.style = "visibility:hidden;"
                 }
@@ -150,44 +153,50 @@
             function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
             async function enter() {
                 if (guess.length == 5) {
-                    var currRow = 1 + (row * 5);
-                    for (let i = 0; i < 5; i++) {
-                        document.getElementById(i + currRow).className = "finishedTile"
-                        document.getElementById(i + currRow).style.animationPlayState = "running"
-                    }
-                    sleep(200)
-                    var temp_target = []
-                    for (let i = 0; i < 5; i++) { temp_target[i] = target[i].toUpperCase() }
-                    for (let i = 0; i < 5; i++) {
-                        if (document.getElementById(guess[i].toLowerCase()).style =="background-color: rgb(43, 42, 42);"){
-                            document.getElementById(guess[i].toLowerCase()).style = "background-color:rgb(105, 105, 105)"
+                    if (isWord(guess)){
+                        var currRow = 1 + (row * 5);
+                        for (let i = 0; i < 5; i++) {
+                            document.getElementById(i + currRow).className = "finishedTile"
+                            document.getElementById(i + currRow).style.animationPlayState = "running"
                         }
-                        if (guess[i] === temp_target[i]) {
-                            document.getElementById(i + currRow).style = "background-color: rgb(20, 184, 83)"
-                            document.getElementById(guess[i].toLowerCase()).style = "background-color: rgb(20, 184, 83)"
-                            temp_target[i] = "*"
+                        sleep(200)
+                        var temp_target = []
+                        for (let i = 0; i < 5; i++) { temp_target[i] = target[i].toUpperCase() }
+                        for (let i = 0; i < 5; i++) {
+                            if (document.getElementById(guess[i].toLowerCase()).style =="background-color: rgb(43, 42, 42);"){
+                                document.getElementById(guess[i].toLowerCase()).style = "background-color:rgb(105, 105, 105)"
+                            }
+                            if (guess[i] === temp_target[i]) {
+                                document.getElementById(i + currRow).style = "background-color: rgb(20, 184, 83)"
+                                document.getElementById(guess[i].toLowerCase()).style = "background-color: rgb(20, 184, 83)"
+                                temp_target[i] = "*"
+                            }
                         }
-                    }
-                    for (let i = 0; i < 5; i++) {
-                        if (temp_target[i] == "^"){
-                            document.getElementById(i + currRow).style = "background-color:rgb(105, 105, 105)"
-                        }
-                        if (temp_target[i] != "*") {
-                            if (temp_target.includes(guess[i])) {
-                                document.getElementById(i + currRow).style = "background-color: rgb(252, 80, 0)"
-                                if (document.getElementById(guess[i].toLowerCase()).style != "background-color: rgb(20, 184, 83)"){
-                                    document.getElementById(guess[i].toLowerCase()).style = "background-color:rgb(252, 80, 0)"
+                        for (let i = 0; i < 5; i++) {
+                            if (temp_target[i] == "^"){
+                                document.getElementById(i + currRow).style = "background-color:rgb(105, 105, 105)"
+                            }
+                            if (temp_target[i] != "*") {
+                                if (temp_target.includes(guess[i])) {
+                                    document.getElementById(i + currRow).style = "background-color: rgb(252, 80, 0)"
+                                    if (document.getElementById(guess[i].toLowerCase()).style != "background-color: rgb(20, 184, 83)"){
+                                        document.getElementById(guess[i].toLowerCase()).style = "background-color:rgb(252, 80, 0)"
+                                    }
+                                    temp_target[temp_target.indexOf(guess[i])] = "^"
                                 }
-                                temp_target[temp_target.indexOf(guess[i])] = "^"
-                            }
-                            else {
-                                document.getElementById(i + currRow).style = "background-color: rgb(105, 105, 105)"
+                                else {
+                                    document.getElementById(i + currRow).style = "background-color: rgb(105, 105, 105)"
+                                }
                             }
                         }
-                    }
-                    row += 1
-                    guess = []
-                };
+                        if (guess == target.toUpperCase().split("")){
+                            won=true
+                            ToggleMenu()
+                        }
+                        row += 1
+                        guess = []
+                    };
+                }
             };
             async function backspace() {
                 if (guess.length > 0) {
