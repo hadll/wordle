@@ -82,7 +82,7 @@
                 location.href = "https://hadll.github.io/wordle/?"+encode(word);
             }
             function isWord(word){
-                if(dictionary.includes(word.toLowerCase)){
+                if(dictionary.includes(word.join("").toLowerCase()) ||  words.includes(word.join("").toLowerCase())){
                     return true
                 }else{
                     return false
