@@ -114,3 +114,21 @@ h1{
     padding:5%;
     visibility: hidden;
 }
+#results{
+    color:white
+}
+#errorBox{
+    color: white;
+    font-size: 120%;
+    border-color: rgb(73, 73, 73) ;
+    border-radius: 8px;
+    border-width: 5px;
+    background-color: rgb(110, 110, 110);
+    animation-name: shake;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    width:20%;
+    position: absolute;
+    left:40%;
+    top: 15%;
+}

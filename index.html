@@ -16,6 +16,7 @@
             
             </header>
         </div>
+        <p id="errorBox"> </p>
         <div class="menu" id="menuDiv">
             <h2 id="Results"></h2>
             <button class="menubutton" style="width:fit-content" onclick="GetRandomWord()">Play a random word</button>
@@ -79,13 +80,23 @@
             }
             function GetRandomWord(){
                 word = words[getRndInteger(0,words.length)].toUpperCase()
-                location.href = "https://hadll.github.io/wordle/?"+encode(word);
+                location.href = "https://haddle.me/wordle/?"+encode(word);
             }
             function isWord(word){
-                if(dictionary.includes(word.join("").toLowerCase()) ||  words.includes(word.join("").toLowerCase())){
+                if(dictionary.includes(word.join("").toLowerCase()) ||  words.includes(word.join("").toLowerCase()) || target==word.join("").toLowerCase()){
                     return true
                 }else{
                     return false
+                }
+            }
+            async function throwErr(err){
+                box=document.getElementById("errorBox");
+                box.innerHTML=err;
+                box.style.opacity = 1;
+                await sleep(1000)
+                for (i=100;i>0;i--){
+                    await sleep(10)
+                    box.style.opacity -=0.01
                 }
             }
             function getRndInteger(min, max) {
@@ -103,7 +114,7 @@
                 let word = (document.getElementById("customWord").value)
                 if (word.length=5){
                     alert(word.toUpperCase())
-                    alert("Use this link to play your word! : https://hadll.github.io/wordle/?"+encode(word.toUpperCase()))
+                    alert("Use this link to play your word! : https://haddle.me/wordle/?"+encode(word.toUpperCase()))
                 }
             }
             function ToggleMenu(){
@@ -134,8 +145,8 @@
                 return val
             }
             const url=window.location.href
-            if ((url.replace("https://hadll.github.io/wordle","")).length>2){
-                target=decode(url.replace("https://hadll.github.io/wordle/?",""))
+            if ((url.replace("https://haddle.me/wordle","")).length>2){
+                target=decode(url.replace("https://haddle.me/wordle/?",""))
             }
             window.onload = function () {
                 window.onkeydown = function (getKey) {
@@ -163,7 +174,7 @@
                         var temp_target = []
                         for (let i = 0; i < 5; i++) { temp_target[i] = target[i].toUpperCase() }
                         for (let i = 0; i < 5; i++) {
-                            if (document.getElementById(guess[i].toLowerCase()).style =="background-color: rgb(43, 42, 42);"){
+                            if (document.getElementById(guess[i].toLowerCase()).style.backgroundColor=="rgb(43, 42, 42);"){
                                 document.getElementById(guess[i].toLowerCase()).style = "background-color:rgb(105, 105, 105)"
                             }
                             if (guess[i] === temp_target[i]) {
@@ -175,6 +186,7 @@
                         for (let i = 0; i < 5; i++) {
                             if (temp_target[i] == "^"){
                                 document.getElementById(i + currRow).style = "background-color:rgb(105, 105, 105)"
+                                document.getElementById(guess[i].toLowerCase()).style = "background-color: rgb(105, 105, 105)"
                             }
                             if (temp_target[i] != "*") {
                                 if (temp_target.includes(guess[i])) {
@@ -186,6 +198,7 @@
                                 }
                                 else {
                                     document.getElementById(i + currRow).style = "background-color: rgb(105, 105, 105)"
+                                    document.getElementById(guess[i].toLowerCase()).style = "background-color: rgb(105, 105, 105)"
                                 }
                             }
                         }
@@ -195,7 +208,11 @@
                         }
                         row += 1
                         guess = []
-                    };
+                    }else{
+                        throwErr("Invalid word")
+                    }
+                }else{
+                    throwErr("Word is too short")
                 }
             };
             async function backspace() {
