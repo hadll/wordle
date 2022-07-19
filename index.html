@@ -83,7 +83,7 @@
                 location.href = "https://haddle.me/wordle/?"+encode(word);
             }
             function isWord(word){
-                if(dictionary.includes(word.join("").toLowerCase()) ||  words.includes(word.join("").toLowerCase()) || target==word.join("").toLowerCase()){
+                if(dictionary.includes(word.join("").toLowerCase()) ||  words.includes(word.join("").toLowerCase()) || target==word.join("").toUpperCase()){
                     return true
                 }else{
                     return false
