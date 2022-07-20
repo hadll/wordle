@@ -138,7 +138,7 @@
             }
             function decode(num) {
                 let val=""
-                while (num>0) {
+                for (let i = 0; i<5; i++) {
                     val+=alphabet[num%alphabet.length]
                     num = Math.floor(num/alphabet.length)
                 }
