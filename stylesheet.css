@@ -1,25 +1,17 @@
 :root{
     --tilecolour: rgb(255,0,0)
 }
-@font-face {
-    font-family: 'IBM Plex Sans';
-    src: url('Fonts/IBMPlexSans-Regular.woff2') format('woff2'),
-        url('Fonts/IBMPlexSans-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
 button{
     text-align: center;
     color: #000000;
-    font-size: 140%;
+    font-size: 150%;
     width: 5vh;
     height: 8.5vh;
     background-color: rgb(224, 224, 224);
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'IBM Plex Sans Thai Looped', sans-serif;
     border-radius: 8pt;
     border-style:solid;
-    border-width: 2pt;
+    border-width: 4pt;
     border-color: rgb(43, 42, 42);;
     transition-duration: 0.2s;
 }
@@ -35,9 +27,7 @@ button:active{
 body{
     text-align: center;
     background-color: rgb(43, 42, 42);
-    font-family: 'IBM Plex Sans', sans-serif;
-    min-width: 320px;
-    min-height: 550px;
+    font-family: 'IBM Plex Sans Thai Looped', sans-serif;
 }
 h1{
     flex-basis: 19.8%;
