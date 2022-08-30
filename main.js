@@ -4,6 +4,7 @@ function GetDailyWord(){
 function GetRandomWord(){
     target = words[getRndInteger(0,words.length)].toUpperCase()
     Reset()
+    ToggleMenu()
 }
 function isWord(word){
     if(dictionary.includes(word.join("").toLowerCase()) ||  words.includes(word.join("").toLowerCase()) || target==word.join("").toUpperCase()){
@@ -15,7 +16,6 @@ function isWord(word){
 function Reset(){
     guess=[]
     row=0
-    menu_open = true;
     for (i=1;i<=30;i++){
         box=document.getElementById(i.toString())
         box.innerHTML=String.fromCharCode(0x200b)
