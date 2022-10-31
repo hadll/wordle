@@ -4,25 +4,25 @@
         <title>Wordl</title>
         <meta name=”viewport” content=”width=1920, initial-scale=1″>
         <link rel="stylesheet" href="stylesheet.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai+Looped:wght@500&display=swap" rel="stylesheet">
         <link rel="icon" type="image/x-icon" href="Images/wordl-favicon.svg">
     </head>
     <body>
         <div>
+            
             <header style="color:white" class="finishedTile">WORDL
+            <button id="resetbutton" class="menubutton" onclick="Reset()">↺</button>
             <button id="menubutton" class="menubutton" style="width:fit-content" onclick="ToggleMenu()">≡</button>
             
             </header>
         </div>
         <p id="errorBox"> </p>
         <div class="menu" id="menuDiv">
-            <h2 id="Results"></h2>
-            <button class="menubutton" style="width:fit-content" onclick="GetDailyWord()">Play the daily word</button>
-            <button class="menubutton" style="width:fit-content" onclick="GetRandomWord()">Play a random word</button>
-            <button class="menubutton" style="width:fit-content" onclick="EncodeCustomLink()">Make custom word</button>
-            <input type="text" id="customWord">
+            <h2 class="results" id="Results"></h2>
+            <button id="dailyword" class="menubutton" style="width:fit-content" onclick="GetDailyWord()">Play the daily word</button>
+            <button id="randomword" class="menubutton" style="width:fit-content" onclick="GetRandomWord()">Play a random word</button>
+            <button id="customwordbutton" class="menubutton" style="width:fit-content" onclick="EncodeCustomLink()">Make custom word</button>
+            <button id="customwordplay" class="menubutton" style="width:fit-content" onclick="DecodeCustomWord()">Play custom word</button>
+            <input type="text" placeholder="Put a code or word here!" id="customWord">
         </div>
         <div style="width:35vh; margin: auto; line-height: 4.5vh;">
             <div class="tileDiv"> <!--letters-->
