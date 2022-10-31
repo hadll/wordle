@@ -4,7 +4,6 @@ function GetDailyWord(){
 function GetRandomWord(){
     target = words[getRndInteger(0,words.length)].toUpperCase()
     Reset()
-    ToggleMenu()
 }
 function isWord(word){
     if(dictionary.includes(word.join("").toLowerCase()) ||  words.includes(word.join("").toLowerCase()) || target==word.join("").toUpperCase()){
@@ -16,6 +15,7 @@ function isWord(word){
 function Reset(){
     guess=[]
     row=0
+    menu_open = true;
     for (i=1;i<=30;i++){
         box=document.getElementById(i.toString())
         box.innerHTML=String.fromCharCode(0x200b)
@@ -75,8 +75,11 @@ function LoadCookies(){
     }
 }
 function EncodeCustomLink(){
-    let target = (document.getElementById("customWord").value)
+    document.getElementById("customWord").value = encode(document.getElementById("customWord").value.toLowerCase())
     Reset()
+}
+function DecodeCustomWord(){
+    target = decode(document.getElementById("customWord").value)
 }
 function ToggleMenu(){
     menu_div = document.getElementById("menuDiv")
@@ -107,6 +110,21 @@ function decode(num) {
 }
 
 window.onload = function () {
+    document.getElementById('submit').innerHTML = String.fromCharCode(0x2713)
+    document.getElementById('submit').addEventListener("click", enter)
+    document.getElementById('delete').innerHTML = String.fromCharCode(0x232b)
+    document.getElementById('delete').addEventListener("click", backspace)
+    document.getElementById('menubutton').innerHTML = String.fromCharCode(0x2261)
+    document.getElementById('menubutton').addEventListener("click", ToggleMenu)
+    document.getElementById('resetbutton').innerHTML = String.fromCharCode(0x21BA)
+    document.getElementById('resetbutton').addEventListener("click", Reset)
+    document.getElementById('dailyword').addEventListener("click", GetDailyWord)
+    document.getElementById('randomword').addEventListener("click", GetRandomWord)
+    document.getElementById('customwordbutton').addEventListener("click", EncodeCustomLink)
+    document.getElementById('customwordplay').addEventListener("click", DecodeCustomWord)
+    for (i=0;i<26;i++){
+        document.getElementById(alphabet[i].toLocaleLowerCase()).addEventListener("click",function(){keyboard(this.innerHTML)});
+        }
     window.onkeydown = function (getKey) {
         if (getKey.keyCode > 64 && getKey.keyCode < 91) {
             keyboard(alphabet[(getKey.keyCode) - 65])
@@ -160,8 +178,13 @@ async function enter() {
                     }
                 }
             }
-            if (guess == target.toUpperCase().split("")){
+            if (guess.join("") == target.toUpperCase()){
                 won=true
+                document.getElementById("Results").innerHTML = "You Won! The word was " + target.toUpperCase()
+                ToggleMenu()
+            } else if (row == 5){
+                won=false
+                document.getElementById("Results").innerHTML = "You Lost! The word was " + target.toUpperCase()
                 ToggleMenu()
             }
             row += 1
